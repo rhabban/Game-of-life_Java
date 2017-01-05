@@ -1,16 +1,21 @@
 package model;
 
-public abstract class Fish {
+public abstract class FishModel {
 	private int age;
 	private boolean isDead;
 	private int pX;
 	private int pY;
 	
+<<<<<<< HEAD:src/model/Fish.java
 	// Nombre de cycle nécessaire à la reproduction
 	private int reproduction_period;
 	
 	public Fish(int age, boolean isDead, int pX, int pY) {
 		//super();
+=======
+	public FishModel(int age, boolean isDead, int pX, int pY) {
+		super();
+>>>>>>> 817981aac96e91c4bf5d51a5bd45b6b650e7a63f:src/model/FishModel.java
 		this.age = age;
 		this.isDead = isDead;
 		this.pX = pX;
