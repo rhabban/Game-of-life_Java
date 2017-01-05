@@ -2,8 +2,8 @@ package model;
 
 public class SharkModel extends FishModel{
 
-	public SharkModel(int age, boolean isDead, int pX, int pY, int reproduction_period) {
-		super(age, isDead, pX, pY, int reproduction_period);
+	public SharkModel(int age, boolean isDead, int pX, int pY) {
+		super(age, isDead, pX, pY);
 		// TODO Auto-generated constructor stub
 	}
 

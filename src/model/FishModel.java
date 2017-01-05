@@ -9,8 +9,7 @@ public abstract class FishModel {
 	// Nombre de cycle nécessaire à la reproduction
 	private int reproduction_period;
 	
-	public FishModel(int age, boolean isDead, int pX, int pY, int reproduction_period) {
-		super();
+	public FishModel(int age, boolean isDead, int pX, int pY) {
 		this.age = age;
 		this.isDead = isDead;
 		this.pX = pX;

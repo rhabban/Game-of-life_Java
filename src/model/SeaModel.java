@@ -2,8 +2,6 @@ package model;
 
 import java.util.Arrays;
 
-import model.FishModel;
-
 public class SeaModel {
 
 	protected int sharksCount;
