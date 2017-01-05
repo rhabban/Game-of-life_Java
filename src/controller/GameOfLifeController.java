@@ -12,21 +12,20 @@ public class GameOfLifeController {
 	SeaModel sea;
 	ArrayList<FishModel> fishes = new ArrayList<>();
 	
-	public GameOfLifeController(ArrayList<FishModel> fishes, SeaModel sea) {
+	public GameOfLifeController(SeaModel sea) {
 		super();
-		this.fishes = fishes;
 		this.sea = sea;
 	}
 	
 	public void initGameOfLife()
 	{
-		for(int i=0;i<this.sea.getSardinesCount();i++)
+		for(int i=0; i<this.sea.getSardinesCount(); i++)
 		{
 			SardineModel sardine = new SardineModel(0,false, 0, 0);
 			fishes.add(sardine);
 		}
 		
-		for(int i=0;i<this.sea.getSharksCount();i++)
+		for(int i=0; i<this.sea.getSharksCount(); i++)
 		{
 			SharkModel shark = new SharkModel(0,false, 0, 0);
 			fishes.add(shark);
