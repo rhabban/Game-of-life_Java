@@ -12,9 +12,8 @@ public class GameOfLifeController {
 	SeaModel sea;
 	ArrayList<FishModel> fishes = new ArrayList<>();
 	
-	public GameOfLifeController(ArrayList<FishModel> fishes, SeaModel sea) {
+	public GameOfLifeController(SeaModel sea) {
 		super();
-		this.fishes = fishes;
 		this.sea = sea;
 	}
 	
