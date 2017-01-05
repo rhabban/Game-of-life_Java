@@ -6,12 +6,17 @@ public abstract class Fish {
 	private int pX;
 	private int pY;
 	
+	// Nombre de cycle nécessaire à la reproduction
+	private int reproduction_period;
+	
 	public Fish(int age, boolean isDead, int pX, int pY) {
-		super();
+		//super();
 		this.age = age;
 		this.isDead = isDead;
 		this.pX = pX;
 		this.pY = pY;
+		
+		this.reproduction_period = 1;
 	}
 
 	public int getAge() {
