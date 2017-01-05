@@ -1,12 +1,12 @@
 package model;
 
-public abstract class Fish {
+public abstract class FishModel {
 	private int age;
 	private boolean isDead;
 	private int pX;
 	private int pY;
 	
-	public Fish(int age, boolean isDead, int pX, int pY) {
+	public FishModel(int age, boolean isDead, int pX, int pY) {
 		super();
 		this.age = age;
 		this.isDead = isDead;

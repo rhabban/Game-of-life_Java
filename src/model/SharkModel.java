@@ -1,14 +1,15 @@
 package model;
 
-public class Sardine extends Fish{
+public class SharkModel extends FishModel{
 
-	public Sardine(int age, boolean isDead, int pX, int pY) {
+	public SharkModel(int age, boolean isDead, int pX, int pY) {
 		super(age, isDead, pX, pY);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
-		return "Sardine []";
+		return "Shark []";
 	}
+
 }
