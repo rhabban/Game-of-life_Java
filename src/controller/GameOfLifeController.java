@@ -19,13 +19,13 @@ public class GameOfLifeController {
 	
 	public void initGameOfLife()
 	{
-		for(int i=0;i<this.sea.getSardinesCount();i++)
+		for(int i=0; i<this.sea.getSardinesCount(); i++)
 		{
 			SardineModel sardine = new SardineModel(0,false, 0, 0);
 			fishes.add(sardine);
 		}
 		
-		for(int i=0;i<this.sea.getSharksCount();i++)
+		for(int i=0; i<this.sea.getSharksCount(); i++)
 		{
 			SharkModel shark = new SharkModel(0,false, 0, 0);
 			fishes.add(shark);

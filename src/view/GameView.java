@@ -28,9 +28,9 @@ public class GameView extends JFrame{
 		gameOfLife.initGameOfLife();
 		
 		WorldController world = new WorldController(gameOfLife.getSea());
-		Container cp = this.getContentPane();
-		cp.setLayout(new BorderLayout());
-		cp.add(world,BorderLayout.CENTER);
+		Container container = this.getContentPane();
+		container.setLayout(new BorderLayout());
+		container.add(world,BorderLayout.CENTER);
 		
 		this.setVisible(true);
 	}
