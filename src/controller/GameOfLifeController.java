@@ -27,9 +27,11 @@ public class GameOfLifeController {
 		
 		for(int i=0; i<this.sea.getSharksCount(); i++)
 		{
-			SharkModel shark = new SharkModel(0,false, 0, 0);
+			SharkModel shark = new SharkModel(0,false, 1, 3);
 			fishes.add(shark);
 		}
+		
+		sea.setFishes(fishes);
 	}
 
 	public void startTime() {
