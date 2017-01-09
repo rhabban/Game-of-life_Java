@@ -1,7 +1,11 @@
 package controller;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.Timer;
 
 import model.FishModel;
 import model.SardineModel;
@@ -37,7 +41,6 @@ public class GameOfLifeController {
 	}
 
 	public void startTime() {
-			
 	}
 	
 	public void startTime(int cyclesCount) {
