@@ -2,8 +2,12 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.Timer;
 
 import model.FishModel;
 import model.SeaModel;
@@ -33,6 +37,26 @@ public class GameView extends JFrame{
 		container.add(world,BorderLayout.CENTER);
 		
 		this.setVisible(true);
+		
+		/*ActionListener taskPerformer = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				container.removeAll();
+				
+				SeaModel sea = new SeaModel();
+				GameOfLifeController gameOfLife = new GameOfLifeController(sea);
+				gameOfLife.initGameOfLife();
+				
+				WorldController world = new WorldController(gameOfLife.getSea());
+				container.add(world,BorderLayout.CENTER);
+				container.repaint();
+				setVisible(true);
+				
+			}
+        };
+        
+		Timer timer = new Timer(2000 ,taskPerformer);
+        timer.start();*/
 	}
 	
 }
