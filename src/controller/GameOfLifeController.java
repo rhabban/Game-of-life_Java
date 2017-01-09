@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import model.FishModel;
 import model.SardineModel;
@@ -19,15 +20,16 @@ public class GameOfLifeController {
 	
 	public void initGameOfLife()
 	{
-		for(int i=0; i<this.sea.getSardinesCount(); i++)
+		List<List<Integer>> listOfLists = new ArrayList<List<Integer>>(); 
+		for(int i=0; i < this.sea.getSardinesCount(); i++)
 		{
-			SardineModel sardine = new SardineModel(0,false, 0, 0);
+			SardineModel sardine = new SardineModel(0,false, (int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())));
 			fishes.add(sardine);
 		}
 		
-		for(int i=0; i<this.sea.getSharksCount(); i++)
+		for(int i=0; i < this.sea.getSharksCount(); i++)
 		{
-			SharkModel shark = new SharkModel(0,false, 1, 3);
+			SharkModel shark = new SharkModel(0,false, (int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())));
 			fishes.add(shark);
 		}
 		

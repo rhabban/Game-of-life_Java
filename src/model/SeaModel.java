@@ -7,15 +7,15 @@ public class SeaModel {
 
 	protected int sharksCount;
 	protected int sardinesCount;
-	protected int width = 5;
-	protected int height = 5;
+	protected int width = 10;
+	protected int height = 10;
 	protected FishModel cells[][];
 	protected ArrayList<FishModel> fishes = new ArrayList<>();
 	
 	
 	public SeaModel() {
-		this.sharksCount = 1;
-		this.sardinesCount = 1;
+		this.sharksCount = 2;
+		this.sardinesCount = 3;
 		this.cells = new FishModel [this.width][this.height];
 	}
 
