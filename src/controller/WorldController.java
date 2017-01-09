@@ -19,7 +19,7 @@ public class WorldController extends JPanel{
 		this.setLayout(new GridLayout(sea.getWidth(), sea.getHeight()));
 		for(int i = 0; i < sea.getWidth() * sea.getHeight(); i++) 
 		{
-			JLabel gridCase = new JLabel();
+			JButton gridCase = new JButton();
 			gridCase.setSize(200,200);
 			
 			for(FishModel fish : sea.getFishes())
