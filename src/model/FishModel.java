@@ -6,7 +6,7 @@ public abstract class FishModel {
 	private int pX;
 	private int pY;
 	
-	// Nombre de cycle nécessaire à la reproduction
+	// Nombre de cycles nécessaire à la reproduction
 	private int reproduction_period;
 	
 	public FishModel(int age, boolean isDead, int pX, int pY) {
