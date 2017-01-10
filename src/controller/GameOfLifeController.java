@@ -3,6 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.Timer;
@@ -17,6 +18,7 @@ public class GameOfLifeController {
 	SeaModel sea;
 	ArrayList<FishModel> fishes = new ArrayList<>();
 	
+	
 	public GameOfLifeController(SeaModel sea) {
 		super();
 		this.sea = sea;
@@ -27,14 +29,14 @@ public class GameOfLifeController {
 		List<List<Integer>> listOfLists = new ArrayList<List<Integer>>(); 
 		for(int i=0; i < this.sea.getSardinesCount(); i++)
 		{
-			SardineModel sardine = new SardineModel(0,false, (int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())));
+			SardineModel sardine = new SardineModel(0,false, (int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())), sea);
 			fishes.add(sardine);
 		}
 		
 		for(int i=0; i < this.sea.getSharksCount(); i++)
 		{
-			SharkModel shark = new SharkModel(0,false, (int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())));
-			fishes.add(shark);
+			/*SharkModel shark = new SharkModel(0,false, (int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())), sea);
+			fishes.add(shark);*/
 		}
 		
 		sea.setFishes(fishes);

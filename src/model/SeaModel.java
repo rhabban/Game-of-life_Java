@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class SeaModel {
 
@@ -11,6 +12,8 @@ public class SeaModel {
 	protected int height = 10;
 	protected FishModel cells[][];
 	protected ArrayList<FishModel> fishes = new ArrayList<>();
+
+	protected HashMap<String, FishModel> fishesX = new HashMap<>();
 	
 	
 	public SeaModel() {
