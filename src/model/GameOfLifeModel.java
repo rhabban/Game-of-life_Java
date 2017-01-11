@@ -23,13 +23,13 @@ public class GameOfLifeModel {
 	{
 		for(int i=0; i < this.sea.getSardinesCount(); i++)
 		{
-			SardineModel sardine = new SardineModel(0,false, (int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())), sea);
+			SardineModel sardine = new SardineModel((int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())), sea);
 			fishes.add(sardine);
 		}
 		
 		for(int i=0; i < this.sea.getSharksCount(); i++)
 		{
-			SharkModel shark = new SharkModel(0,false, (int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())), sea);
+			SharkModel shark = new SharkModel((int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())), sea);
 			fishes.add(shark);
 		}
 		
@@ -39,16 +39,18 @@ public class GameOfLifeModel {
 	public void startTime() 
 	{
 		this.cycleCount += 1;
-		setFishes(new ArrayList<>());
 		
-		initGameOfLife();
-		
-		/*for(FishModel fish : this.fishes)
+		for(FishModel fish : this.fishes)
 		{
 			fish.liveCycle(this);
-		}*/
+		}
 		
-		/* Pour chaque poisson, appeler sa fonction de cycle */
+		updateSea();
+	}
+	
+	public void updateSea()
+	{
+		this.getSea().removeDeadFishes();
 	}
 	
 	public void startTime(int cyclesCount) {

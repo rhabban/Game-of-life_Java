@@ -6,6 +6,7 @@ public abstract class FishModel {
 	private int age;
 	private int pX;
 	private int pY;
+	private boolean isDead;
 	
 	private BehaviorState behavior;
 	private SeaModel sea;
@@ -13,8 +14,9 @@ public abstract class FishModel {
 	// Nombre de cycles n�cessaire � la reproduction
 	private int reproduction_period;
 	
-	public FishModel(int age, boolean isDead, int pX, int pY, SeaModel sea) {
-		this.age = age;
+	public FishModel(int pX, int pY, SeaModel sea) {
+		this.age = 0;
+		this.isDead = false;
 		this.pX = pX;
 		this.pY = pY;
 		this.behavior = new RandomState();
@@ -25,6 +27,15 @@ public abstract class FishModel {
 
 	public int getAge() {
 		return age;
+	}
+
+	
+	public boolean isDead() {
+		return isDead;
+	}
+
+	public void setDead(boolean isDead) {
+		this.isDead = isDead;
 	}
 
 	public void setAge(int age) {
@@ -63,19 +74,7 @@ public abstract class FishModel {
 		this.sea = sea;
 	}
 	
-	public void liveCycle(GameOfLifeModel gameOfLife){
-		age += 1;
-		
-		if(age > 3){
-			gameOfLife.getSea().removeFish(this);
-		}
-		
-		/*else if(age % reproduction_period == 0)
-			reproduction();
-		
-		else
-			behavior.move(this);*/
-	}
+	public abstract void liveCycle(GameOfLifeModel gameOfLife);
 	
 	public void reproduction(){
 		// si l'une des cases voisinante est vide alors cr�er un nouveau poisson

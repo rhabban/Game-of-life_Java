@@ -2,13 +2,31 @@ package model;
 
 public class SardineModel extends FishModel{
 	
-	public SardineModel(int age, boolean isDead, int pX, int pY, SeaModel sea) {
-		super(age, isDead, pX, pY, sea);
+	private final int DEATH_AGE = 3;
+	
+	public SardineModel(int pX, int pY, SeaModel sea) {
+		super(pX, pY, sea);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
 		return "Sardine []";
+	}
+
+	@Override
+	public void liveCycle(GameOfLifeModel gameOfLife) {
+		setAge(getAge() + 1);
+		
+		if(getAge() > DEATH_AGE){
+			this.setDead(true);
+		}
+		
+		/*else if(age % reproduction_period == 0)
+			reproduction();
+		
+		else
+			behavior.move(this);*/
+		
 	}
 }

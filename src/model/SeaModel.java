@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class SeaModel {
 
@@ -31,12 +32,17 @@ public class SeaModel {
 		this.cells = new FishModel [width][height];
 	}
 	
-	public void removeFish(FishModel deadFish)
+	public void removeDeadFishes()
 	{
-		for(FishModel fish : fishes)
+		
+		Iterator<FishModel> it = fishes.iterator();
+		while(it.hasNext()) 
 		{
-			if(fish.getpX() * fish.getpY() == deadFish.getpX() * deadFish.getpY()) 
-				fishes.remove(fish);
+			if(it.next().isDead())
+			{
+				it.remove();
+				System.out.println("Fish removed");
+			}
 		}
 	}
 
