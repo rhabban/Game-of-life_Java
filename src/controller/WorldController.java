@@ -1,6 +1,7 @@
 package controller;
 
 import java.awt.GridLayout;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,9 +22,11 @@ public class WorldController extends JPanel{
 		{
 			JButton gridCase = new JButton();
 			gridCase.setSize(200,200);
-			
-			for(FishModel fish : sea.getFishes())
+		
+			Iterator<FishModel> it = sea.getFishes().iterator();
+			while(it.hasNext()) 
 			{
+				FishModel fish = it.next();
 				if(fish.getpX()*fish.getpY() == i)
 				{
 					if (fish instanceof SardineModel)
@@ -45,6 +48,9 @@ public class WorldController extends JPanel{
 					gridCase.setIcon(new ImageIcon(WorldController.class.getResource("/res/blue-square.png")));
 				}
 			}
+			
+			if(sea.getFishes().isEmpty())
+				gridCase.setIcon(new ImageIcon(WorldController.class.getResource("/res/blue-square.png")));
 			
             this.add(gridCase);
 		}
