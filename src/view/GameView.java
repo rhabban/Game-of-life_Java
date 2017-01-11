@@ -7,17 +7,19 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.Timer;
 
 import model.FishModel;
+import model.GameOfLifeModel;
 import model.SeaModel;
-import controller.GameOfLifeController;
 import controller.WorldController;
 
 public class GameView extends JFrame{
-	private GameOfLifeController gameOfLife;
+	private GameOfLifeModel gameOfLife;
 	private WorldController world;
 	private Container container;
+	private JLabel countLabel;
 	public static void main(String[] args) {
 		GameView frame = new GameView();
 	}
@@ -29,13 +31,17 @@ public class GameView extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		
-		gameOfLife = new GameOfLifeController();
+		gameOfLife = new GameOfLifeModel();
 		gameOfLife.initGameOfLife();
 		
 		world = new WorldController(gameOfLife.getSea());
 		container = this.getContentPane();
 		container.setLayout(new BorderLayout());
 		container.add(world,BorderLayout.CENTER);
+		
+		countLabel = new JLabel();
+		countLabel.setText("Cycle : " + String.valueOf(gameOfLife.getCycleCount()));
+		container.add(countLabel, BorderLayout.SOUTH);
 		
 		this.setVisible(true);
 		
@@ -46,6 +52,8 @@ public class GameView extends JFrame{
 				gameOfLife.startTime();
 				world = new WorldController(gameOfLife.getSea());
 				container.add(world,BorderLayout.CENTER);
+				countLabel.setText("Cycle : " + String.valueOf(gameOfLife.getCycleCount()));
+				container.add(countLabel, BorderLayout.SOUTH);
 				container.repaint();
 				setVisible(true);
 				

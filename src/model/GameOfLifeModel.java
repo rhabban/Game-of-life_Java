@@ -1,4 +1,4 @@
-package controller;
+package model;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,18 +7,15 @@ import java.util.List;
 
 import javax.swing.Timer;
 
-import model.FishModel;
-import model.SardineModel;
-import model.SeaModel;
-import model.SharkModel;
+public class GameOfLifeModel {
 
-public class GameOfLifeController {
-
-	SeaModel sea;
-	ArrayList<FishModel> fishes = new ArrayList<>();
+	private SeaModel sea;
+	private ArrayList<FishModel> fishes = new ArrayList<>();
+	private int cycleCount;
 	
-	public GameOfLifeController() {
+	public GameOfLifeModel() {
 		super();
+		this.cycleCount = 0;
 		this.sea = new SeaModel();
 	}
 	
@@ -41,12 +38,29 @@ public class GameOfLifeController {
 
 	public void startTime() 
 	{
+		this.cycleCount += 1;
 		setFishes(new ArrayList<>());
+		
 		initGameOfLife();
+		
+		/*for(FishModel fish : this.fishes)
+		{
+			fish.liveCycle(this);
+		}*/
+		
+		/* Pour chaque poisson, appeler sa fonction de cycle */
 	}
 	
 	public void startTime(int cyclesCount) {
 		
+	}
+
+	public int getCycleCount() {
+		return cycleCount;
+	}
+
+	public void setCycleCount(int cycleCount) {
+		this.cycleCount = cycleCount;
 	}
 
 	public SeaModel getSea() {

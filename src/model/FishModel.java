@@ -4,19 +4,17 @@ import model.state.*;
 
 public abstract class FishModel {
 	private int age;
-	private boolean isDead;
 	private int pX;
 	private int pY;
 	
 	private BehaviorState behavior;
 	private SeaModel sea;
 	
-	// Nombre de cycles nécessaire à la reproduction
+	// Nombre de cycles nï¿½cessaire ï¿½ la reproduction
 	private int reproduction_period;
 	
 	public FishModel(int age, boolean isDead, int pX, int pY, SeaModel sea) {
 		this.age = age;
-		this.isDead = isDead;
 		this.pX = pX;
 		this.pY = pY;
 		this.behavior = new RandomState();
@@ -31,17 +29,6 @@ public abstract class FishModel {
 
 	public void setAge(int age) {
 		this.age = age;
-	}
-
-	public boolean isDead() {
-		return isDead;
-	}
-
-	public void setDead(boolean isDead) {
-		this.isDead = isDead;
-		pX = -1;
-		pY = -1;
-		// La mer doit être au courant qu'un enfant est mort, le retirer de sa liste d'affichage et d'actions
 	}
 
 	public int getpX() {
@@ -76,27 +63,27 @@ public abstract class FishModel {
 		this.sea = sea;
 	}
 	
-	public void live(){
-		age+= 1;
-		behavior.move(this);
-		
-		if(age % reproduction_period == 0){
-			reproduction();
-		}
+	public void liveCycle(GameOfLifeModel gameOfLife){
+		age += 1;
 		
 		if(age > 3){
-			setDead(true);
+			gameOfLife.getSea().removeFish(this);
 		}
 		
+		/*else if(age % reproduction_period == 0)
+			reproduction();
+		
+		else
+			behavior.move(this);*/
 	}
 	
 	public void reproduction(){
-		// si l'une des cases voisinante est vide alors créer un nouveau poisson
+		// si l'une des cases voisinante est vide alors crï¿½er un nouveau poisson
 	}
 
 	@Override
 	public String toString() {
-		return "Fish [age=" + age + ", isDead=" + isDead + ", pX=" + pX + ", pY=" + pY + "]";
+		return "Fish [age=" + age + ", pX=" + pX + ", pY=" + pY + "]";
 	}
 	
 	public void getPossibleMouvements(){

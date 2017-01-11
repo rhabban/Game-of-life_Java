@@ -30,6 +30,15 @@ public class SeaModel {
 		this.height = height;
 		this.cells = new FishModel [width][height];
 	}
+	
+	public void removeFish(FishModel deadFish)
+	{
+		for(FishModel fish : fishes)
+		{
+			if(fish.getpX() * fish.getpY() == deadFish.getpX() * deadFish.getpY()) 
+				fishes.remove(fish);
+		}
+	}
 
 	public int getSharksCount() {
 		return sharksCount;
