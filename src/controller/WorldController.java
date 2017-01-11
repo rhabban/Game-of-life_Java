@@ -3,6 +3,8 @@ package controller;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,10 +26,11 @@ public class WorldController extends JPanel{
 			JButton gridCase = new JButton();
 			gridCase.setSize(200,200);
 		
-			Iterator<FishModel> it = sea.getFishes().iterator();
+			Iterator<Map.Entry<String, FishModel>> it = sea.getFishes().entrySet().iterator();
 			while(it.hasNext()) 
 			{
-				FishModel fish = it.next();
+				Entry<String, FishModel> pair = it.next();
+				FishModel fish = pair.getValue();
 				if(fish.getpX()*fish.getpY() == i)
 				{
 					if (fish instanceof SardineModel)

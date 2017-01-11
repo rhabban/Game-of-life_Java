@@ -10,7 +10,7 @@ public class SharkModel extends FishModel{
 
 	@Override
 	public String toString() {
-		return "Shark []";
+		return "Shark"+super.toString(); 
 	}
 
 	@Override
@@ -18,7 +18,7 @@ public class SharkModel extends FishModel{
 		setAge(getAge() + 1);
 		
 		if(getAge() > DEATH_AGE){
-			this.setDead(true);
+			this.destroy();
 		}
 		
 		/*else if(age % reproduction_period == 0)

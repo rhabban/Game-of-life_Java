@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class SeaModel {
 
@@ -11,16 +12,12 @@ public class SeaModel {
 	protected int sardinesCount;
 	protected int width = 10;
 	protected int height = 10;
-	protected FishModel cells[][];
-	protected ArrayList<FishModel> fishes = new ArrayList<>();
 
-	protected HashMap<String, FishModel> fishesX = new HashMap<>();
-	
+	protected ConcurrentHashMap<String, FishModel> fishes = new ConcurrentHashMap<>();
 	
 	public SeaModel() {
-		this.sharksCount = 2;
-		this.sardinesCount = 3;
-		this.cells = new FishModel [this.width][this.height];
+		this.sharksCount = 1;
+		this.sardinesCount = 2;
 	}
 
 	public SeaModel(int sharksCount, int sardinesCount, int width, int height) {
@@ -29,21 +26,68 @@ public class SeaModel {
 		this.sardinesCount = sardinesCount;
 		this.width = width;
 		this.height = height;
-		this.cells = new FishModel [width][height];
 	}
 	
-	public void removeDeadFishes()
-	{
+	public ArrayList<String> getCellsNextToFish(FishModel fish){
+		int x = fish.getpX();
+		int y = fish.getpY();
+		ArrayList<String> cells = new ArrayList<>();
 		
-		Iterator<FishModel> it = fishes.iterator();
-		while(it.hasNext()) 
-		{
-			if(it.next().isDead())
-			{
-				it.remove();
-				System.out.println("Fish removed");
+		if(x > 0){
+			cells.add((x-1)+"-"+y);
+		}
+		if(x < this.width){
+			cells.add((x+1+"-"+y));
+		}
+		if(y > 0){
+			cells.add(x+"-"+(y-1));
+		}
+		if(y < this.height){
+			cells.add(x+"-"+(y+1));
+		}
+		return cells;
+	}
+	
+	public ArrayList<String> getCellsNextToFish(FishModel fish, boolean empty){
+		ArrayList<String> cells = getCellsNextToFish(fish);
+		ArrayList<String> calculatedCells = new ArrayList<>();
+		for(String cell : cells){
+			FishModel fishOnCell = getFish(cell);
+			if(empty){
+				if(!(fishOnCell instanceof FishModel)){
+					calculatedCells.add(cell);
+				}
+			} else {
+				if(fishOnCell instanceof FishModel){
+					calculatedCells.add(cell);
+				}
 			}
 		}
+		return calculatedCells;
+	}
+	
+	public FishModel getFish(int x, int y){
+		return getFish(x+"-"+y);
+	}
+	
+	public FishModel getFish(String xy){
+		return this.fishes.get(xy);
+	}
+	
+	public void addFish(FishModel fish){
+		String position = fish.getpXY();
+		this.fishes.put(position, fish);
+	}
+	
+	public void setFishPosition(String newPosition, String oldPosition){
+		FishModel fish = fishes.get(oldPosition);
+		fishes.remove(oldPosition);
+		fishes.put(newPosition, fish);
+	}
+	
+	public void removeFish(FishModel fish){
+		// remove count
+		fishes.remove(fish.getpXY());
 	}
 
 	public int getSharksCount() {
@@ -78,31 +122,20 @@ public class SeaModel {
 		this.height = height;
 	}
 
-	public FishModel[][] getCells() {
-		return cells;
-	}
-
-	public void setCells(FishModel[][] cells) {
-		this.cells = cells;
-	}
-
-	public ArrayList<FishModel> getFishes() {
+	public ConcurrentHashMap<String, FishModel> getFishes() {
 		return fishes;
 	}
 
 	public void setFishes(ArrayList<FishModel> fishes) {
-		this.fishes = fishes;
+		for(FishModel fish: fishes){
+			addFish(fish);
+		}
 	}
 
 	@Override
 	public String toString() {
 		return "Sea [sharksCount=" + sharksCount + ", sardinesCount=" + sardinesCount + ", width=" + width + ", height="
-				+ height + ", cells=" + Arrays.toString(cells) + "]";
+				+ height + ", fishes=" + fishes + "]";
 	}
-	
-	
-	
-	
-	
 	
 }

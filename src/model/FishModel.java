@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 import model.state.*;
 
 public abstract class FishModel {
@@ -23,6 +25,24 @@ public abstract class FishModel {
 		this.sea = sea;
 				
 		this.reproduction_period = 1;
+	}
+	
+	public void destroy(){
+		this.setDead(true);
+		this.getSea().removeFish(this);
+	}
+	
+	public ArrayList<String> getCellsNextToHim(boolean empty){
+		return this.sea.getCellsNextToFish(this, empty);
+	}
+	
+	public abstract void liveCycle(GameOfLifeModel gameOfLife);
+	
+	public void move(){
+		String oldPosition = this.getpXY();
+		this.behavior.move(this);
+		String newPosition = this.getpXY();
+		this.sea.setFishPosition(newPosition, oldPosition);
 	}
 
 	public int getAge() {
@@ -53,6 +73,11 @@ public abstract class FishModel {
 	public int getpY() {
 		return pY;
 	}
+	
+	public String getpXY(){
+		String position = Integer.toString(pX)+'-'+Integer.toString(pY);
+		return position;
+	}
 
 	public void setpY(int pY) {
 		this.pY = pY;
@@ -74,19 +99,9 @@ public abstract class FishModel {
 		this.sea = sea;
 	}
 	
-	public abstract void liveCycle(GameOfLifeModel gameOfLife);
-	
-	public void reproduction(){
-		// si l'une des cases voisinante est vide alors cr�er un nouveau poisson
-	}
-
 	@Override
 	public String toString() {
-		return "Fish [age=" + age + ", pX=" + pX + ", pY=" + pY + "]";
-	}
-	
-	public void getPossibleMouvements(){
-		//
+		return "[age=" + age + ", pX=" + pX + ", pY=" + pY + "]";
 	}
 	
 	

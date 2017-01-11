@@ -3,14 +3,16 @@ package model;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.Timer;
 
 public class GameOfLifeModel {
 
 	private SeaModel sea;
-	private ArrayList<FishModel> fishes = new ArrayList<>();
 	private int cycleCount;
 	
 	public GameOfLifeModel() {
@@ -24,25 +26,23 @@ public class GameOfLifeModel {
 		for(int i=0; i < this.sea.getSardinesCount(); i++)
 		{
 			SardineModel sardine = new SardineModel((int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())), sea);
-			fishes.add(sardine);
+			sea.addFish(sardine);
 		}
 		
 		for(int i=0; i < this.sea.getSharksCount(); i++)
 		{
 			SharkModel shark = new SharkModel((int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())), sea);
-			fishes.add(shark);
+			sea.addFish(shark);
 		}
-		
-		sea.setFishes(fishes);
 	}
 
 	public void startTime() 
 	{
 		this.cycleCount += 1;
 		
-		for(FishModel fish : this.fishes)
-		{
-			fish.liveCycle(this);
+		for (Map.Entry<String, FishModel> entry : sea.getFishes().entrySet()) {
+			FishModel fish = entry.getValue();
+		    fish.liveCycle(this);
 		}
 		
 		updateSea();
@@ -50,8 +50,7 @@ public class GameOfLifeModel {
 	
 	public void updateSea()
 	{
-		this.getSea().removeDeadFishes();
-		if(fishes.isEmpty())
+		if(sea.getFishes().isEmpty())
 			initGameOfLife();
 	}
 	
@@ -75,17 +74,9 @@ public class GameOfLifeModel {
 		this.sea = sea;
 	}
 
-	public ArrayList<FishModel> getFishes() {
-		return fishes;
-	}
-
-	public void setFishes(ArrayList<FishModel> fishes) {
-		this.fishes = fishes;
-	}
-
 	@Override
 	public String toString() {
-		return "GameOfLifeController [sea=" + sea + ", fishes=" + fishes + "]";
+		return "GameOfLifeController [sea=" + sea + ", fishes=" + sea.getFishes() + "]";
 	}
 	
 	

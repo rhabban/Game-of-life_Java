@@ -11,7 +11,7 @@ public class SardineModel extends FishModel{
 
 	@Override
 	public String toString() {
-		return "Sardine []";
+		return "Sardine"+super.toString(); 
 	}
 
 	@Override
@@ -19,7 +19,7 @@ public class SardineModel extends FishModel{
 		setAge(getAge() + 1);
 		
 		if(getAge() > DEATH_AGE){
-			this.setDead(true);
+			this.destroy();
 		}
 		
 		/*else if(age % reproduction_period == 0)
