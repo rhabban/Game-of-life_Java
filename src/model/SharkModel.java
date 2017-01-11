@@ -8,9 +8,12 @@ public class SharkModel extends FishModel{
 	private final int CYCLE_WITHOUT_EAT_TO_DIE = 20;
 	private int countSinceLastMeal = 0;
 	
+	private final int YOUNG_AGE = 10;
+	private final int ADULT_AGE = 20;
+	
 	public SharkModel(int pX, int pY, SeaModel sea) {
 		super(pX, pY, sea);
-		setBehavior(new YoungState());
+		setBehavior(new ChildState());
 	}
 	
 	public int getCountSinceLastMeal() {
@@ -29,6 +32,11 @@ public class SharkModel extends FishModel{
 	@Override
 	public void liveCycle(GameOfLifeModel gameOfLife) {
 		setAge(getAge() + 1);
+		
+		if(getAge() == YOUNG_AGE){
+			setBehavior(new YoungState());
+			System.out.println("Un requin devient jeune adulte");
+		}
 		
 		if(getAge() > DEATH_AGE || getCountSinceLastMeal() > CYCLE_WITHOUT_EAT_TO_DIE)
 			this.destroy();

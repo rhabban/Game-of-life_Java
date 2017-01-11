@@ -60,7 +60,7 @@ public class SeaModel {
 					calculatedCells.add(cell);
 				}
 			} else {
-				if(fishOnCell instanceof FishModel){
+				if(fishOnCell instanceof SardineModel){
 					calculatedCells.add(cell);
 				}
 			}

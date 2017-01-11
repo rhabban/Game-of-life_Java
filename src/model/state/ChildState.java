@@ -4,24 +4,25 @@ import java.util.ArrayList;
 
 import model.FishModel;
 
-public class YoungState extends BehaviorState {
+public class ChildState extends BehaviorState {
 	
 	public void move(FishModel fish){
 
 		ArrayList<String> emptyCells = fish.getCellsNextToHim(true);
 		ArrayList<String> sardinesCells = fish.getCellsNextToHim(false);
 		
-		String newPosition;
-		int random;
-		if(sardinesCells.size()>0){
-			random = (int)(Math.random() * sardinesCells.size()) + 0;
-			newPosition = sardinesCells.get(random);
-			FishModel target = fish.getSea().getFish(newPosition);
+		ArrayList<String> cells = new ArrayList<>();
+		cells.addAll(emptyCells);
+		cells.addAll(sardinesCells);
+		
+		int random = (int)(Math.random() * cells.size()) + 0;
+		String newPosition = cells.get(random);
+		
+		FishModel target = fish.getSea().getFish(newPosition);
+		if(target instanceof FishModel){
 			target.destroy();
-		} else {
-			random = (int)(Math.random() * emptyCells.size()) + 0;
-			newPosition = emptyCells.get(random);
 		}
+	
 		String[] newXY = newPosition.split("-");
 		int x = Integer.parseInt(newXY[0]);
 		int y = Integer.parseInt(newXY[1]);
