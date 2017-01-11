@@ -10,8 +10,8 @@ public class SeaModel {
 
 	protected int sharksCount;
 	protected int sardinesCount;
-	protected int width = 10;
-	protected int height = 10;
+	protected int width = 3;
+	protected int height = 3;
 	
 	protected ArrayList<FishModel> fishesX;
 

@@ -2,7 +2,7 @@ package model;
 
 public class SardineModel extends FishModel{
 	
-	private final int DEATH_AGE = 20;
+	private final int DEATH_AGE = 2;
 	
 	public SardineModel(int pX, int pY, SeaModel sea) {
 		super(pX, pY, sea);

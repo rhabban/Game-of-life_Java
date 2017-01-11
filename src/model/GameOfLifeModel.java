@@ -27,8 +27,20 @@ public class GameOfLifeModel {
 	{
 		for(int i=0; i < this.sea.getSardinesCount(); i++)
 		{
-			SardineModel sardine = new SardineModel(ThreadLocalRandom.current().nextInt(0,sea.getWidth()-1),ThreadLocalRandom.current().nextInt(0,sea.getWidth()-1), sea);
-			sea.addFish(sardine);
+			while(true){
+				int x = ThreadLocalRandom.current().nextInt(0,sea.getWidth()-1);
+				int y = ThreadLocalRandom.current().nextInt(0,sea.getWidth()-1);
+				FishModel fish = sea.getFish(x,y);
+
+				if(!(fish instanceof FishModel)){
+					SardineModel sardine = new SardineModel(x,y, sea);
+					sea.addFish(sardine);
+					break;
+				}
+
+				System.out.println(x);
+				System.out.println(y);
+			}
 		}
 		
 		for(int i=0; i < this.sea.getSharksCount(); i++)
@@ -40,6 +52,8 @@ public class GameOfLifeModel {
 
 	public void startTime() 
 	{
+
+		System.out.println(sea);
 		this.cycleCount += 1;
 		
 		ConcurrentHashMap<String, FishModel> fishesX = new ConcurrentHashMap<String, FishModel>(sea.getFishes());
@@ -54,7 +68,6 @@ public class GameOfLifeModel {
 	
 	public void updateSea()
 	{
-		System.out.println(sea);
 		if(sea.getFishes().isEmpty()){
 			System.out.println("empty");
 			initGameOfLife();
