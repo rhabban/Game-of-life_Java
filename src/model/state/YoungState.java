@@ -10,6 +10,7 @@ public class YoungState extends BehaviorState {
 
 		ArrayList<String> emptyCells = fish.getCellsNextToHim(true);
 		ArrayList<String> fullCells = fish.getCellsNextToHim(false);
+		System.out.println("fullcells-"+fullCells);
 		
 		String newPosition;
 		int random;
@@ -17,13 +18,11 @@ public class YoungState extends BehaviorState {
 			random = (int)(Math.random() * fullCells.size()) + 0;
 			newPosition = fullCells.get(random);
 			FishModel target = fish.getSea().getFish(newPosition);
-			System.out.println(target);
 			target.destroy();
-			System.out.println("Je mange");
+			System.out.println("Je mange"+target);
 		} else {
 			random = (int)(Math.random() * emptyCells.size()) + 0;
 			newPosition = emptyCells.get(random);
-			System.out.println("Je mange pas");
 		}
 		String[] newXY = newPosition.split("-");
 		int x = Integer.parseInt(newXY[0]);

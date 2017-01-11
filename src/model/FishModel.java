@@ -38,8 +38,6 @@ public abstract class FishModel {
 		String oldPosition = this.getpXY();
 		this.behavior.move(this);
 		String newPosition = this.getpXY();
-		System.out.print(this.sea.getFish(oldPosition));
-		System.out.print(this.sea.getFish(newPosition));
 		this.sea.setFishPosition(newPosition, oldPosition);
 	}
 	

@@ -90,6 +90,7 @@ public class SeaModel {
 	
 	public void removeFish(FishModel fish){
 		// remove count
+		System.out.println("remove"+fish);
 		fishes.remove(fish.getpXY());
 	}
 	

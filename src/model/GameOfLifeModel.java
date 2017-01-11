@@ -60,7 +60,8 @@ public class GameOfLifeModel {
 		
 		for (Map.Entry<String, FishModel> entry : fishesX.entrySet()) {
 			FishModel fish = entry.getValue();
-			fish.liveCycle(this);
+			if(!fish.isDead())
+				fish.liveCycle(this);
 		}
 
 		updateSea();
