@@ -10,8 +10,8 @@ public class SeaModel {
 
 	protected int sharksCount;
 	protected int sardinesCount;
-	protected int width = 3;
-	protected int height = 3;
+	protected int width = 10;
+	protected int height = 10;
 	
 	protected ArrayList<FishModel> fishesX;
 
@@ -89,8 +89,6 @@ public class SeaModel {
 	}
 	
 	public void removeFish(FishModel fish){
-		// remove count
-		System.out.println("remove"+fish);
 		fishes.remove(fish.getpXY());
 	}
 	

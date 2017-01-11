@@ -37,9 +37,6 @@ public class GameOfLifeModel {
 					sea.addFish(sardine);
 					break;
 				}
-
-				System.out.println(x);
-				System.out.println(y);
 			}
 		}
 		
@@ -52,8 +49,6 @@ public class GameOfLifeModel {
 
 	public void startTime() 
 	{
-
-		System.out.println(sea);
 		this.cycleCount += 1;
 		
 		ConcurrentHashMap<String, FishModel> fishesX = new ConcurrentHashMap<String, FishModel>(sea.getFishes());
@@ -70,7 +65,6 @@ public class GameOfLifeModel {
 	public void updateSea()
 	{
 		if(sea.getFishes().isEmpty()){
-			System.out.println("empty");
 			initGameOfLife();
 		}
 	}

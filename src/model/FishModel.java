@@ -34,7 +34,6 @@ public abstract class FishModel {
 	public abstract void liveCycle(GameOfLifeModel gameOfLife);
 	
 	public void move(){
-		System.out.println(this);
 		String oldPosition = this.getpXY();
 		this.behavior.move(this);
 		String newPosition = this.getpXY();

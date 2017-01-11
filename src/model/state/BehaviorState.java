@@ -4,8 +4,6 @@ import model.FishModel;
 
 public abstract class BehaviorState {
 	
-	public void move(FishModel fish){
-		
-	}
+	public abstract void move(FishModel fish);
 
 }

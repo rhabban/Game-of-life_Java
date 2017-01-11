@@ -60,7 +60,7 @@ public class GameView extends JFrame{
 			}
         };
         
-		Timer timer = new Timer(500 ,taskPerformer);
+		Timer timer = new Timer(700 ,taskPerformer);
         timer.start();
 	}
 	
