@@ -2,7 +2,8 @@ package model;
 
 public class SardineModel extends FishModel{
 	
-	private final int DEATH_AGE = 2;
+	private final int DEATH_AGE = 20;
+	private final int REPRODUCTION_RATE = 10;
 	
 	public SardineModel(int pX, int pY, SeaModel sea) {
 		super(pX, pY, sea);
@@ -20,9 +21,11 @@ public class SardineModel extends FishModel{
 		
 		if(getAge() > DEATH_AGE){
 			this.destroy();
+		} else if(getAge() % REPRODUCTION_RATE == 0){
+			reproduction(this);
 		} else {
 			this.move();
 		}
-		
+
 	}
 }

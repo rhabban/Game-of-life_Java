@@ -84,6 +84,7 @@ public class SeaModel {
 	public void setFishPosition(String newPosition, String oldPosition){
 		FishModel fish = fishes.get(oldPosition);
 		fishes.remove(oldPosition);
+		FishModel fish2 = fishes.get(newPosition);
 		fishes.put(newPosition, fish);
 	}
 	
