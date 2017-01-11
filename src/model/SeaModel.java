@@ -12,12 +12,14 @@ public class SeaModel {
 	protected int sardinesCount;
 	protected int width = 10;
 	protected int height = 10;
+	
+	protected ArrayList<FishModel> fishesX;
 
 	protected ConcurrentHashMap<String, FishModel> fishes = new ConcurrentHashMap<>();
 	
 	public SeaModel() {
-		this.sharksCount = 0;
-		this.sardinesCount = 3;
+		this.sharksCount = 1;
+		this.sardinesCount = 2;
 	}
 
 	public SeaModel(int sharksCount, int sardinesCount, int width, int height) {
@@ -36,13 +38,13 @@ public class SeaModel {
 		if(x > 0){
 			cells.add((x-1)+"-"+y);
 		}
-		if(x < this.width){
-			cells.add((x+1+"-"+y));
+		if(x < this.width-1){
+			cells.add((x+1)+"-"+y);
 		}
 		if(y > 0){
 			cells.add(x+"-"+(y-1));
 		}
-		if(y < this.height){
+		if(y < this.height-1){
 			cells.add(x+"-"+(y+1));
 		}
 		return cells;
@@ -88,6 +90,14 @@ public class SeaModel {
 	public void removeFish(FishModel fish){
 		// remove count
 		fishes.remove(fish.getpXY());
+	}
+	
+	public ArrayList<FishModel> getFishesX() {
+		return fishesX;
+	}
+
+	public void setFishesX(ArrayList<FishModel> fishesX) {
+		this.fishesX = fishesX;
 	}
 
 	public int getSharksCount() {

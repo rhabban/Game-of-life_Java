@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.Timer;
@@ -41,20 +42,23 @@ public class GameOfLifeModel {
 	{
 		this.cycleCount += 1;
 		
-		for (Map.Entry<String, FishModel> entry : sea.getFishes().entrySet()) {
+		ConcurrentHashMap<String, FishModel> fishesX = new ConcurrentHashMap<String, FishModel>(sea.getFishes());
+		
+		for (Map.Entry<String, FishModel> entry : fishesX.entrySet()) {
 			FishModel fish = entry.getValue();
 		    fish.liveCycle(this);
 		}
-		
-		System.out.println(sea);
-		
-		//updateSea();
+				
+		updateSea();
 	}
 	
 	public void updateSea()
 	{
-		if(sea.getFishes().isEmpty())
+		System.out.println(sea);
+		if(sea.getFishes().isEmpty()){
+			System.out.println("empty");
 			initGameOfLife();
+		}
 	}
 	
 	public void startTime(int cyclesCount) {

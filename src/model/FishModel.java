@@ -48,7 +48,6 @@ public abstract class FishModel {
 	public int getAge() {
 		return age;
 	}
-
 	
 	public boolean isDead() {
 		return isDead;

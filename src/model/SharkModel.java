@@ -19,13 +19,9 @@ public class SharkModel extends FishModel{
 		
 		if(getAge() > DEATH_AGE){
 			this.destroy();
+		} else {
+			this.move();
 		}
-		
-		/*else if(age % reproduction_period == 0)
-			reproduction();
-		
-		else
-			behavior.move(this);*/
 		
 	}
 
