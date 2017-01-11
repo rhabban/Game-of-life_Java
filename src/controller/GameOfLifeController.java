@@ -3,7 +3,6 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.Timer;
@@ -18,15 +17,13 @@ public class GameOfLifeController {
 	SeaModel sea;
 	ArrayList<FishModel> fishes = new ArrayList<>();
 	
-	
-	public GameOfLifeController(SeaModel sea) {
+	public GameOfLifeController() {
 		super();
-		this.sea = sea;
+		this.sea = new SeaModel();
 	}
 	
 	public void initGameOfLife()
 	{
-		List<List<Integer>> listOfLists = new ArrayList<List<Integer>>(); 
 		for(int i=0; i < this.sea.getSardinesCount(); i++)
 		{
 			SardineModel sardine = new SardineModel(0,false, (int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())), sea);
@@ -35,14 +32,17 @@ public class GameOfLifeController {
 		
 		for(int i=0; i < this.sea.getSharksCount(); i++)
 		{
-			/*SharkModel shark = new SharkModel(0,false, (int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())), sea);
-			fishes.add(shark);*/
+			SharkModel shark = new SharkModel(0,false, (int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())), sea);
+			fishes.add(shark);
 		}
 		
 		sea.setFishes(fishes);
 	}
 
-	public void startTime() {
+	public void startTime() 
+	{
+		setFishes(new ArrayList<>());
+		initGameOfLife();
 	}
 	
 	public void startTime(int cyclesCount) {

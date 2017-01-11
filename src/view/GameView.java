@@ -15,7 +15,9 @@ import controller.GameOfLifeController;
 import controller.WorldController;
 
 public class GameView extends JFrame{
-	
+	private GameOfLifeController gameOfLife;
+	private WorldController world;
+	private Container container;
 	public static void main(String[] args) {
 		GameView frame = new GameView();
 	}
@@ -27,27 +29,22 @@ public class GameView extends JFrame{
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		
-		SeaModel sea = new SeaModel();
-		GameOfLifeController gameOfLife = new GameOfLifeController(sea);
+		gameOfLife = new GameOfLifeController();
 		gameOfLife.initGameOfLife();
 		
-		WorldController world = new WorldController(gameOfLife.getSea());
-		Container container = this.getContentPane();
+		world = new WorldController(gameOfLife.getSea());
+		container = this.getContentPane();
 		container.setLayout(new BorderLayout());
 		container.add(world,BorderLayout.CENTER);
 		
 		this.setVisible(true);
 		
-		/*ActionListener taskPerformer = new ActionListener() {
+		ActionListener taskPerformer = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				container.removeAll();
-				
-				SeaModel sea = new SeaModel();
-				GameOfLifeController gameOfLife = new GameOfLifeController(sea);
-				gameOfLife.initGameOfLife();
-				
-				WorldController world = new WorldController(gameOfLife.getSea());
+				gameOfLife.startTime();
+				world = new WorldController(gameOfLife.getSea());
 				container.add(world,BorderLayout.CENTER);
 				container.repaint();
 				setVisible(true);
@@ -56,7 +53,7 @@ public class GameView extends JFrame{
         };
         
 		Timer timer = new Timer(2000 ,taskPerformer);
-        timer.start();*/
+        timer.start();
 	}
 	
 }
