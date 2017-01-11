@@ -1,4 +1,5 @@
 package model;
+import model.state.*;
 
 public class SharkModel extends FishModel{
 
@@ -7,6 +8,7 @@ public class SharkModel extends FishModel{
 	
 	public SharkModel(int pX, int pY, SeaModel sea) {
 		super(pX, pY, sea);
+		setBehavior(new YoungState());
 	}
 
 	@Override

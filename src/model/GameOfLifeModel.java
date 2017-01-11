@@ -62,7 +62,7 @@ public class GameOfLifeModel {
 			FishModel fish = entry.getValue();
 		    fish.liveCycle(this);
 		}
-				
+
 		updateSea();
 	}
 	
