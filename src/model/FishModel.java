@@ -44,17 +44,19 @@ public abstract class FishModel {
 	{
 		ArrayList<String> availableCells = this.getCellsNextToHim(true);
 		
-		int value = (int)(Math.random() * availableCells.size()) + 0;
-		String newPosition = availableCells.get(value);
-		String[] newXY = newPosition.split("-");
-		int x = Integer.parseInt(newXY[0]);
-		int y = Integer.parseInt(newXY[1]);
-		
-		
-		if(fish instanceof SharkModel)
-			sea.addFish(new SharkModel(x,y,sea));
-		else
-			sea.addFish(new SardineModel(x,y,sea));
+		if(availableCells.size()>0){
+			int value = (int)(Math.random() * availableCells.size()) + 0;
+			String newPosition = availableCells.get(value);
+			String[] newXY = newPosition.split("-");
+			int x = Integer.parseInt(newXY[0]);
+			int y = Integer.parseInt(newXY[1]);
+			
+			if(fish instanceof SharkModel)
+				sea.addFish(new SharkModel(x,y,sea));
+			else
+				sea.addFish(new SardineModel(x,y,sea));
+			
+		}
 	}
 
 	public int getAge() {
