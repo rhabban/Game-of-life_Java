@@ -26,7 +26,7 @@ public class GameView extends JFrame{
 	
 	public GameView() {
 		this.setTitle("Game Of Life");
-		this.setSize(500, 350);
+		this.setSize(1000, 650);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);

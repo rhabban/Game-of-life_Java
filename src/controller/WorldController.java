@@ -1,6 +1,7 @@
 package controller;
 
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.util.Iterator;
 
 import javax.swing.ImageIcon;
@@ -31,26 +32,33 @@ public class WorldController extends JPanel{
 				{
 					if (fish instanceof SardineModel)
 					{
-						
-						gridCase.setIcon(new ImageIcon(WorldController.class.getResource("/res/green-square.png")));
+						ImageIcon imageIcon = new ImageIcon(WorldController.class.getResource("/res/sardine-adult-square.png")); // load the image to a imageIcon
+						Image image = imageIcon.getImage();
+						Image newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+						imageIcon = new ImageIcon(newimg);
+						gridCase.setIcon(imageIcon);
 						break;
 					}
 					
 					else if (fish instanceof SharkModel)
 					{
-						gridCase.setIcon(new ImageIcon(WorldController.class.getResource("/res/red-square.png")));
+						ImageIcon imageIcon = new ImageIcon(WorldController.class.getResource("/res/shark-adult-square.png")); // load the image to a imageIcon
+						Image image = imageIcon.getImage();
+						Image newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+						imageIcon = new ImageIcon(newimg);
+						gridCase.setIcon(imageIcon);
 						break;
 					}
 				}
 				
 				else
 				{
-					gridCase.setIcon(new ImageIcon(WorldController.class.getResource("/res/blue-square.png")));
+					gridCase.setIcon(new ImageIcon(WorldController.class.getResource("/res/sea-square.png")));
 				}
 			}
 			
 			if(sea.getFishes().isEmpty())
-				gridCase.setIcon(new ImageIcon(WorldController.class.getResource("/res/blue-square.png")));
+				gridCase.setIcon(new ImageIcon(WorldController.class.getResource("/res/sea-square.png")));
 			
             this.add(gridCase);
 		}
