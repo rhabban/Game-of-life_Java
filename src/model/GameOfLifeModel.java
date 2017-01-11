@@ -51,6 +51,8 @@ public class GameOfLifeModel {
 	public void updateSea()
 	{
 		this.getSea().removeDeadFishes();
+		if(fishes.isEmpty())
+			initGameOfLife();
 	}
 	
 	public void startTime(int cyclesCount) {
