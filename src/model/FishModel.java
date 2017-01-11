@@ -13,9 +13,6 @@ public abstract class FishModel {
 	private BehaviorState behavior;
 	private SeaModel sea;
 	
-	// Nombre de cycles n�cessaire � la reproduction
-	private int reproduction_period;
-	
 	public FishModel(int pX, int pY, SeaModel sea) {
 		this.age = 0;
 		this.isDead = false;
@@ -23,8 +20,6 @@ public abstract class FishModel {
 		this.pY = pY;
 		this.behavior = new RandomState();
 		this.sea = sea;
-				
-		this.reproduction_period = 1;
 	}
 	
 	public void destroy(){
@@ -43,6 +38,25 @@ public abstract class FishModel {
 		this.behavior.move(this);
 		String newPosition = this.getpXY();
 		this.sea.setFishPosition(newPosition, oldPosition);
+	}
+	
+	public void reproduction(FishModel fish)
+	{
+		ArrayList<String> availableCells = this.getCellsNextToHim(true);
+		
+		if(availableCells.size()>0){
+			int value = (int)(Math.random() * availableCells.size()) + 0;
+			String newPosition = availableCells.get(value);
+			String[] newXY = newPosition.split("-");
+			int x = Integer.parseInt(newXY[0]);
+			int y = Integer.parseInt(newXY[1]);
+			
+			if(fish instanceof SharkModel)
+				sea.addFish(new SharkModel(x,y,sea));
+			else
+				sea.addFish(new SardineModel(x,y,sea));
+			
+		}
 	}
 
 	public int getAge() {
