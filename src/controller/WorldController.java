@@ -31,7 +31,7 @@ public class WorldController extends JPanel{
 			{
 				Entry<String, FishModel> pair = it.next();
 				FishModel fish = pair.getValue();
-				if(fish.getpX()*fish.getpY() == i)
+				if(fish.getpX()+fish.getpY()*sea.getWidth() == i)
 				{
 					if (fish instanceof SardineModel)
 					{

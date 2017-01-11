@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.Timer;
 
@@ -25,7 +26,7 @@ public class GameOfLifeModel {
 	{
 		for(int i=0; i < this.sea.getSardinesCount(); i++)
 		{
-			SardineModel sardine = new SardineModel((int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())), sea);
+			SardineModel sardine = new SardineModel(ThreadLocalRandom.current().nextInt(0,sea.getWidth()-1),ThreadLocalRandom.current().nextInt(0,sea.getWidth()-1), sea);
 			sea.addFish(sardine);
 		}
 		
@@ -45,7 +46,9 @@ public class GameOfLifeModel {
 		    fish.liveCycle(this);
 		}
 		
-		updateSea();
+		System.out.println(sea);
+		
+		//updateSea();
 	}
 	
 	public void updateSea()

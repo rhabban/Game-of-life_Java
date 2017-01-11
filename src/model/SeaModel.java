@@ -16,8 +16,8 @@ public class SeaModel {
 	protected ConcurrentHashMap<String, FishModel> fishes = new ConcurrentHashMap<>();
 	
 	public SeaModel() {
-		this.sharksCount = 1;
-		this.sardinesCount = 2;
+		this.sharksCount = 0;
+		this.sardinesCount = 3;
 	}
 
 	public SeaModel(int sharksCount, int sardinesCount, int width, int height) {
