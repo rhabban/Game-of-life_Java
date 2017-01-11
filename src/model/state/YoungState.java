@@ -8,14 +8,16 @@ public class YoungState extends BehaviorState {
 	
 	public void move(FishModel fish){
 
-		ArrayList<String> emptyCells = fish.getCellsNextToHim(false);
-		ArrayList<String> fullCells = fish.getCellsNextToHim(true);
+		ArrayList<String> emptyCells = fish.getCellsNextToHim(true);
+		ArrayList<String> fullCells = fish.getCellsNextToHim(false);
 		
 		String newPosition;
 		int random;
 		if(fullCells.size()>0){
 			random = (int)(Math.random() * fullCells.size()) + 0;
 			newPosition = fullCells.get(random);
+			FishModel target = fish.getSea().getFish(newPosition);
+			target.destroy();
 		} else {
 			random = (int)(Math.random() * emptyCells.size()) + 0;
 			newPosition = emptyCells.get(random);

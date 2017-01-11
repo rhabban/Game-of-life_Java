@@ -24,12 +24,5 @@ public class SardineModel extends FishModel{
 			this.move();
 		}
 		
-		
-		/*else if(age % reproduction_period == 0)
-			reproduction();
-		
-		else
-			behavior.move(this);*/
-		
 	}
 }
