@@ -3,11 +3,20 @@ package model.state;
 import java.util.ArrayList;
 
 import model.FishModel;
+import model.SharkModel;
 
-public class ChildState extends BehaviorState {
-	
-	public void move(FishModel fish){
-
+/**
+ * @author bastiensebire
+ * Permet de définir le comportement d'un requin lorsqu'il est enfant. Il va ici se déplacer de
+ * manière aléatoire et mangera les sardines qu'il rencontrera.
+ */
+public class ChildState extends BehaviorState 
+{
+	/* (non-Javadoc)
+	 * @see model.state.BehaviorState#move(model.FishModel)
+	 */
+	public void move(FishModel fish)
+	{
 		ArrayList<String> emptyCells = fish.getCellsNextToHim(true);
 		ArrayList<String> sardinesCells = fish.getCellsNextToHim(false);
 		
@@ -19,8 +28,12 @@ public class ChildState extends BehaviorState {
 		String newPosition = cells.get(random);
 		
 		FishModel target = fish.getSea().getFish(newPosition);
-		if(target instanceof FishModel){
+		if(target instanceof FishModel)
+		{
 			target.destroy();
+			SharkModel shark = (SharkModel) fish;
+			shark.setCountSinceLastMeal(0);
+			System.out.println("Un requin a mangé une sardine.");
 		}
 	
 		String[] newXY = newPosition.split("-");

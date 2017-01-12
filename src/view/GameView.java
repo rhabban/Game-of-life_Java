@@ -15,16 +15,26 @@ import model.GameOfLifeModel;
 import model.SeaModel;
 import controller.WorldController;
 
-public class GameView extends JFrame{
+/**
+ * @author bastiensebire
+ * Il s'agit de la vue du game of life, qui hérite d'une JFrame. Elle va permettre d'afficher l'ensemble
+ * des cases. Nous utilisons un objet de type Timer afin de mettre à jour les déplacement et la grille.
+ */
+
+public class GameView extends JFrame
+{
 	private GameOfLifeModel gameOfLife;
 	private WorldController world;
 	private Container container;
 	private JLabel countLabel;
-	public static void main(String[] args) {
+	
+	public static void main(String[] args) 
+	{
 		GameView frame = new GameView();
 	}
 	
-	public GameView() {
+	public GameView() 
+	{
 		this.setTitle("Game Of Life");
 		this.setSize(1000, 650);
 		this.setResizable(false);
@@ -33,6 +43,7 @@ public class GameView extends JFrame{
 		
 		gameOfLife = new GameOfLifeModel();
 		gameOfLife.initGameOfLife();
+		System.out.println("Le jeu commence.");
 		
 		world = new WorldController(gameOfLife.getSea());
 		container = this.getContentPane();
@@ -45,9 +56,12 @@ public class GameView extends JFrame{
 		
 		this.setVisible(true);
 		
-		ActionListener taskPerformer = new ActionListener() {
+		// Mise à jour de la grille du game of life.
+		ActionListener taskPerformer = new ActionListener() 
+		{
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+			{
 				container.removeAll();
 				gameOfLife.startTime();
 				world = new WorldController(gameOfLife.getSea());
