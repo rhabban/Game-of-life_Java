@@ -15,6 +15,7 @@ import model.FishModel;
 import model.SardineModel;
 import model.SeaModel;
 import model.SharkModel;
+import model.state.BehaviorState;
 
 public class WorldController extends JPanel{
 
@@ -35,7 +36,25 @@ public class WorldController extends JPanel{
 				{
 					if (fish instanceof SardineModel)
 					{
-						ImageIcon imageIcon = new ImageIcon(WorldController.class.getResource("/res/sardine-adult-square.png")); // load the image to a imageIcon
+						
+						SardineModel sardine = (SardineModel) fish;
+						String imagePath = null;
+						if(sardine.getAge() >= sardine.ADULT_AGE)
+						{
+							imagePath = "/res/sardine-adult-square.png";
+						}
+						
+						else if(sardine.getAge() <= sardine.YOUNG_AGE)
+						{
+							imagePath = "/res/sardine-baby-square.png";
+						}
+						
+						else
+						{
+							imagePath = "/res/sardine-teen-square.png";
+						}
+						
+						ImageIcon imageIcon = new ImageIcon(WorldController.class.getResource(imagePath)); // load the image to a imageIcon
 						Image image = imageIcon.getImage();
 						Image newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 						imageIcon = new ImageIcon(newimg);
@@ -45,7 +64,24 @@ public class WorldController extends JPanel{
 					
 					else if (fish instanceof SharkModel)
 					{
-						ImageIcon imageIcon = new ImageIcon(WorldController.class.getResource("/res/shark-adult-square.png")); // load the image to a imageIcon
+						SharkModel shark = (SharkModel) fish;
+						String imagePath = null;
+						if(shark.getAge() >= shark.ADULT_AGE)
+						{
+							imagePath = "/res/shark-adult-square.png";
+						}
+						
+						else if(shark.getAge() <= shark.YOUNG_AGE)
+						{
+							imagePath = "/res/shark-baby-square.png";
+						}
+						
+						else
+						{
+							imagePath = "/res/shark-teen-square.png";
+						}
+						
+						ImageIcon imageIcon = new ImageIcon(WorldController.class.getResource(imagePath)); // load the image to a imageIcon
 						Image image = imageIcon.getImage();
 						Image newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 						imageIcon = new ImageIcon(newimg);

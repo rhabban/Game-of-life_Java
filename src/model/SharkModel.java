@@ -8,8 +8,8 @@ public class SharkModel extends FishModel{
 	private final int CYCLE_WITHOUT_EAT_TO_DIE = 20;
 	private int countSinceLastMeal = 0;
 	
-	private final int YOUNG_AGE = 10;
-	private final int ADULT_AGE = 20;
+	public final int YOUNG_AGE = 10;
+	public final int ADULT_AGE = 20;
 	
 	public SharkModel(int pX, int pY, SeaModel sea) {
 		super(pX, pY, sea);
