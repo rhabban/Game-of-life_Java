@@ -1,4 +1,4 @@
-package view;
+package view_controller;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.Timer;
 
 import model.GameOfLifeModel;
-import controller.WorldController;
 
 /**
  * @author Bastien Sebire & Corentin Chupin
@@ -18,19 +17,19 @@ import controller.WorldController;
  * des cases. Nous utilisons un objet de type Timer afin de mettre à jour les déplacement et la grille.
  */
 
-public class GameView extends JFrame
+public class GameViewController extends JFrame
 {
 	private GameOfLifeModel gameOfLife;
-	private WorldController world;
+	private WorldViewController world;
 	private Container container;
 	private JLabel countLabel;
 	
 	public static void main(String[] args) 
 	{
-		GameView frame = new GameView();
+		GameViewController frame = new GameViewController();
 	}
 	
-	public GameView() 
+	public GameViewController() 
 	{
 		this.setTitle("Game Of Life");
 		this.setSize(1000, 650);
@@ -42,7 +41,7 @@ public class GameView extends JFrame
 		gameOfLife.initGameOfLife();
 		System.out.println("Le jeu commence.");
 		
-		world = new WorldController(gameOfLife.getSea());
+		world = new WorldViewController(gameOfLife.getSea());
 		container = this.getContentPane();
 		container.setLayout(new BorderLayout());
 		container.add(world,BorderLayout.CENTER);
@@ -61,7 +60,7 @@ public class GameView extends JFrame
 			{
 				container.removeAll();
 				gameOfLife.startTime();
-				world = new WorldController(gameOfLife.getSea());
+				world = new WorldViewController(gameOfLife.getSea());
 				container.add(world,BorderLayout.CENTER);
 				countLabel.setText("Cycle : " + String.valueOf(gameOfLife.getCycleCount()));
 				container.add(countLabel, BorderLayout.SOUTH);

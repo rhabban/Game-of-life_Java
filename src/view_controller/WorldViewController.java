@@ -1,4 +1,4 @@
-package controller;
+package view_controller;
 
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -23,13 +23,13 @@ import model.SharkModel;
  * Elle vérifie l'age des poissons afin d'afficher l'image correspondant à leur état. 
  *
  */
-public class WorldController extends JPanel
+public class WorldViewController extends JPanel
 {
 
 	/**
 	 * @param sea
 	 */
-	public WorldController(SeaModel sea) 
+	public WorldViewController(SeaModel sea) 
 	{	
 		super();
 		this.setLayout(new GridLayout(sea.getWidth(), sea.getHeight()));
@@ -59,7 +59,7 @@ public class WorldController extends JPanel
 						else
 							imagePath = "/res/sardine-teen-square.png";
 						
-						ImageIcon imageIcon = new ImageIcon(WorldController.class.getResource(imagePath));
+						ImageIcon imageIcon = new ImageIcon(WorldViewController.class.getResource(imagePath));
 						Image image = imageIcon.getImage();
 						Image newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);  
 						imageIcon = new ImageIcon(newimg);
@@ -80,7 +80,7 @@ public class WorldController extends JPanel
 						else
 							imagePath = "/res/shark-teen-square.png";
 						
-						ImageIcon imageIcon = new ImageIcon(WorldController.class.getResource(imagePath));
+						ImageIcon imageIcon = new ImageIcon(WorldViewController.class.getResource(imagePath));
 						Image image = imageIcon.getImage();
 						Image newimg = image.getScaledInstance(100, 100,  java.awt.Image.SCALE_SMOOTH);  
 						imageIcon = new ImageIcon(newimg);
@@ -90,11 +90,11 @@ public class WorldController extends JPanel
 				}
 				
 				else
-					gridCase.setIcon(new ImageIcon(WorldController.class.getResource("/res/sea-square.png")));
+					gridCase.setIcon(new ImageIcon(WorldViewController.class.getResource("/res/sea-square.png")));
 			}
 			
 			if(sea.getFishes().isEmpty())
-				gridCase.setIcon(new ImageIcon(WorldController.class.getResource("/res/sea-square.png")));
+				gridCase.setIcon(new ImageIcon(WorldViewController.class.getResource("/res/sea-square.png")));
 			
             this.add(gridCase);
 		}
