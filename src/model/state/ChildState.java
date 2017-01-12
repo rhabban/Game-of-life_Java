@@ -12,8 +12,9 @@ import model.SharkModel;
  */
 public class ChildState extends BehaviorState 
 {
-	/* (non-Javadoc)
-	 * @see model.state.BehaviorState#move(model.FishModel)
+	/**
+	 * @param fish
+	 * Déplace le poisson aléatoirement, il peut manger une sardine
 	 */
 	public void move(FishModel fish)
 	{

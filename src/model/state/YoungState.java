@@ -11,8 +11,9 @@ import model.SharkModel;
  */
 public class YoungState extends BehaviorState 
 {
-	/* (non-Javadoc)
-	 * @see model.state.BehaviorState#move(model.FishModel)
+	/**
+	 * @param fish
+	 * Déplace le poisson vers une sardine adjacente
 	 */
 	public void move(FishModel fish)
 	{

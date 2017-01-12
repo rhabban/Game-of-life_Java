@@ -10,8 +10,9 @@ import model.FishModel;
  */
 public class RandomState extends BehaviorState 
 {
-	/* (non-Javadoc)
-	 * @see model.state.BehaviorState#move(model.FishModel)
+	/**
+	 * @param fish
+	 * Déplace le poisson aléatoirement vers une case vide adjacente
 	 */
 	public void move(FishModel fish)
 	{
