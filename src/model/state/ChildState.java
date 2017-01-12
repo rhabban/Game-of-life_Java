@@ -6,7 +6,7 @@ import model.FishModel;
 import model.SharkModel;
 
 /**
- * @author bastiensebire
+ * @author Bastien Sebire & Corentin Chupin
  * Permet de définir le comportement d'un requin lorsqu'il est enfant. Il va ici se déplacer de
  * manière aléatoire et mangera les sardines qu'il rencontrera.
  */

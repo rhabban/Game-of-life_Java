@@ -16,7 +16,7 @@ import model.SeaModel;
 import model.SharkModel;
 
 /**
- * @author bastiensebire
+ * @author Bastien Sebire & Corentin Chupin
  * WorldController permet de générer la grille sur laquelle seront affichés les entités du game of life.
  * Elle prend en paramètre un SeaModel, à partir duquel elle va itérer sur l'ensemble des cases de la 
  * grille afin de créer des sardines, des requins et des cases vides.

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import model.FishModel;
 
 /**
- * @author bastiensebire
+ * @author Bastien Sebire & Corentin Chupin
  * Permet de définir un comportement de déplacement aléatoire.
  */
 public class RandomState extends BehaviorState 

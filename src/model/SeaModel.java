@@ -1,10 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class SeaModel {
@@ -143,7 +140,6 @@ public class SeaModel {
 	public void setFishPosition(String newPosition, String oldPosition){
 		FishModel fish = fishes.get(oldPosition);
 		fishes.remove(oldPosition);
-		FishModel fish2 = fishes.get(newPosition);
 		fishes.put(newPosition, fish);
 	}
 	

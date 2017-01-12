@@ -6,7 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 
 /**
- * @author bastiensebire
+ * @author Bastien Sebire & Corentin Chupin
  * Classe permettant de régir le jeu. Elle génère une mer, créé des poissons et déclenche leurs 
  * diverses actions.
  */

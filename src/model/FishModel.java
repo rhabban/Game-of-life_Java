@@ -4,7 +4,12 @@ import java.util.ArrayList;
 
 import model.state.*;
 
-public abstract class FishModel {
+/**
+ * @author Bastien Sebire & Corentin Chupin
+ * Classe abstraite d'un poisson. 
+ */
+public abstract class FishModel 
+{
 	private int age;
 	private int pX;
 	private int pY;
@@ -13,7 +18,13 @@ public abstract class FishModel {
 	private BehaviorState behavior;
 	private SeaModel sea;
 	
-	public FishModel(int pX, int pY, SeaModel sea) {
+	/**
+	 * @param pX
+	 * @param pY
+	 * @param sea
+	 */
+	public FishModel(int pX, int pY, SeaModel sea) 
+	{
 		this.age = 0;
 		this.isDead = false;
 		this.pX = pX;
@@ -22,28 +33,52 @@ public abstract class FishModel {
 		this.sea = sea;
 	}
 	
-	public void destroy(){
+	
+	/**
+	 * Permet de retirer un poisson mort de la grille.
+	 */
+	public void destroy()
+	{
 		this.setDead(true);
 		this.getSea().removeFish(this);
 	}
 	
-	public ArrayList<String> getCellsNextToHim(boolean empty){
+	/**
+	 * @param empty
+	 * @return
+	 * Récupère les cases adjacentes à un poisson. Le paramètre empty précise si on souhaite
+	 * récupérer uniquement des cases disponibles ou non.
+	 */
+	public ArrayList<String> getCellsNextToHim(boolean empty)
+	{
 		return this.sea.getCellsNextToFish(this, empty);
 	}
 	
+
 	public ArrayList<String> getNearestSardine(){
 		return this.sea.getNearestSardineNextToFish(this);
 	}
 	
+	/**
+	 * @param gameOfLife
+	 */
 	public abstract void liveCycle(GameOfLifeModel gameOfLife);
 	
-	public void move(){
+	/**
+	 * Déplace un poisson en fonction de son comportement.
+	 */
+	public void move()
+	{
 		String oldPosition = this.getpXY();
 		this.behavior.move(this);
 		String newPosition = this.getpXY();
 		this.sea.setFishPosition(newPosition, oldPosition);
 	}
 	
+	/**
+	 * @param fish
+	 * Si possible, le poisson va donner naissance sur une case voisine.
+	 */
 	public void reproduction(FishModel fish)
 	{
 		ArrayList<String> availableCells = this.getCellsNextToHim(true);
@@ -56,10 +91,17 @@ public abstract class FishModel {
 			int y = Integer.parseInt(newXY[1]);
 			
 			if(fish instanceof SharkModel)
+			{
+				System.out.println("Un requin s'est reproduit");
 				sea.addFish(new SharkModel(x,y,sea));
+			}
+				
 			else
+			{
+				System.out.println("Une sardine s'est reproduit.");
 				sea.addFish(new SardineModel(x,y,sea));
-			
+			}
+				
 		}
 	}
 

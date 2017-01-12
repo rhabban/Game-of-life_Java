@@ -4,19 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
-import model.FishModel;
 import model.GameOfLifeModel;
-import model.SeaModel;
 import controller.WorldController;
 
 /**
- * @author bastiensebire
+ * @author Bastien Sebire & Corentin Chupin
  * Il s'agit de la vue du game of life, qui hérite d'une JFrame. Elle va permettre d'afficher l'ensemble
  * des cases. Nous utilisons un objet de type Timer afin de mettre à jour les déplacement et la grille.
  */

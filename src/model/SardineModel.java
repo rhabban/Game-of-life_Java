@@ -1,7 +1,7 @@
 package model;
 
 /**
- * @author bastiensebire
+ * @author Bastien Sebire & Corentin Chupin
  * Une classe SardineModel dérivant du FishModel.
  */
 public class SardineModel extends FishModel

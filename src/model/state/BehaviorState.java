@@ -3,7 +3,7 @@ package model.state;
 import model.FishModel;
 
 /**
- * @author bastiensebire
+ * @author Bastien Sebire & Corentin Chupin
  * Pattern State qui va permettre de définir les comportements.
  */
 public abstract class BehaviorState 

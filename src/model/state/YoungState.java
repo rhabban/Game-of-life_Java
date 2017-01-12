@@ -6,7 +6,7 @@ import model.FishModel;
 import model.SharkModel;
 
 /**
- * @author bastiensebire
+ * @author Bastien Sebire & Corentin Chupin
  * Le requin adolescent va commencer à cibler des sardines à proximité.
  */
 public class YoungState extends BehaviorState 

@@ -2,7 +2,7 @@ package model;
 import model.state.*;
 
 /**
- * @author bastiensebire
+ * @author Bastien Sebire & Corentin Chupin
  * Une classe SharkModel dérivant du FishModel.
  */
 public class SharkModel extends FishModel
