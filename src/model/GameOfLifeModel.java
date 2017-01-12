@@ -51,8 +51,16 @@ public class GameOfLifeModel
 		
 		for(int i=0; i < this.sea.getSharksCount(); i++)
 		{
-			SharkModel shark = new SharkModel((int) (Math.random() * (sea.getWidth())), (int) (Math.random() * (sea.getHeight())), sea);
-			sea.addFish(shark);
+			int x = ThreadLocalRandom.current().nextInt(0,sea.getWidth()-1);
+			int y = ThreadLocalRandom.current().nextInt(0,sea.getWidth()-1);
+			FishModel fish = sea.getFish(x,y);
+
+			if(!(fish instanceof FishModel))
+			{
+				SharkModel shark = new SharkModel(x,y, sea);
+				sea.addFish(shark);
+				break;
+			}
 		}
 	}
 
