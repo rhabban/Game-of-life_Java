@@ -14,10 +14,7 @@ public class GameOfLifeModel
 {
 	private SeaModel sea;
 	private int cycleCount;
-	
-	/**
-	 * 
-	 */
+
 	public GameOfLifeModel() 
 	{
 		super();
@@ -83,6 +80,12 @@ public class GameOfLifeModel
 		updateSea();
 	}
 	
+	public void startTime(int cyclesCountLimit) 
+	{
+		if(this.cycleCount < cyclesCountLimit)
+			startTime();
+	}
+	
 	/**
 	 * S'il n'y a plus de poisson, on relance initGameOfLife.
 	 */
@@ -92,10 +95,6 @@ public class GameOfLifeModel
 		{
 			initGameOfLife();
 		}
-	}
-	
-	public void startTime(int cyclesCount) {
-		
 	}
 
 	public int getCycleCount() {
