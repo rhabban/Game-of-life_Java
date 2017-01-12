@@ -6,11 +6,11 @@ package model;
  */
 public class SardineModel extends FishModel
 {
-	private final int DEATH_AGE = 20;
-	private final int REPRODUCTION_RATE = 10;
+	private final int DEATH_AGE = 24;
+	private final int REPRODUCTION_RATE = 12;
 	
-	public final int YOUNG_AGE = 10;
-	public final int ADULT_AGE = 20;
+	public final int YOUNG_AGE = 8;
+	public final int ADULT_AGE = 16;
 	
 	/**
 	 * @param pX
@@ -38,11 +38,15 @@ public class SardineModel extends FishModel
 		setAge(getAge() + 1);
 		
 		if(getAge() > DEATH_AGE)
+		{
 			this.destroy();
+			System.out.println("Une sardine est morte de veillesse.");
+		}
+			
 		
 		else if(getAge() % REPRODUCTION_RATE == 0)
 			reproduction(this);
-		
+			
 		else
 			this.move();
 	}

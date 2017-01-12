@@ -86,9 +86,17 @@ public abstract class FishModel
 			int y = Integer.parseInt(newXY[1]);
 			
 			if(fish instanceof SharkModel)
+			{
+				System.out.println("Un requin s'est reproduit");
 				sea.addFish(new SharkModel(x,y,sea));
+			}
+				
 			else
+			{
+				System.out.println("Une sardine s'est reproduit.");
 				sea.addFish(new SardineModel(x,y,sea));
+			}
+				
 		}
 	}
 

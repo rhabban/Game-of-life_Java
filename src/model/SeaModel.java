@@ -25,7 +25,7 @@ public class SeaModel
 	{
 		
 		this.sharksCount = 1;
-		this.sardinesCount = 2;
+		this.sardinesCount = 4;
 	}
 
 	/**

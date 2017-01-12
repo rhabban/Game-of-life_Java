@@ -3,6 +3,7 @@ package model.state;
 import java.util.ArrayList;
 
 import model.FishModel;
+import model.SharkModel;
 
 /**
  * @author bastiensebire
@@ -27,8 +28,12 @@ public class ChildState extends BehaviorState
 		String newPosition = cells.get(random);
 		
 		FishModel target = fish.getSea().getFish(newPosition);
-		if(target instanceof FishModel){
+		if(target instanceof FishModel)
+		{
 			target.destroy();
+			SharkModel shark = (SharkModel) fish;
+			shark.setCountSinceLastMeal(0);
+			System.out.println("Un requin a mangé une sardine.");
 		}
 	
 		String[] newXY = newPosition.split("-");

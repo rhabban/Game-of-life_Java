@@ -3,6 +3,7 @@ package model.state;
 import java.util.ArrayList;
 
 import model.FishModel;
+import model.SharkModel;
 
 /**
  * @author bastiensebire
@@ -27,6 +28,10 @@ public class YoungState extends BehaviorState
 			newPosition = sardinesCells.get(random);
 			FishModel target = fish.getSea().getFish(newPosition);
 			target.destroy();
+			SharkModel shark = (SharkModel) fish;
+			shark.setCountSinceLastMeal(0);
+
+			System.out.println("Un requin a mangé une sardine.");
 		} 
 		
 		else 

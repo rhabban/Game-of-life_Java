@@ -7,13 +7,13 @@ import model.state.*;
  */
 public class SharkModel extends FishModel
 {
-	private final int DEATH_AGE = 35;
-	private final int REPRODUCTION_RATE = 18;
+	private final int DEATH_AGE = 40;
+	private final int REPRODUCTION_RATE = 15;
 	private final int CYCLE_WITHOUT_EAT_TO_DIE = 20;
 	private int countSinceLastMeal = 0;
 	
-	public final int YOUNG_AGE = 10;
-	public final int ADULT_AGE = 20;
+	public final int YOUNG_AGE = 12;
+	public final int ADULT_AGE = 28;
 	
 	/**
 	 * @param pX
@@ -43,8 +43,11 @@ public class SharkModel extends FishModel
 		}
 		
 		if(getAge() > DEATH_AGE || getCountSinceLastMeal() > CYCLE_WITHOUT_EAT_TO_DIE)
+		{
+			System.out.println("Un requin est mort de faim.");
 			this.destroy();
-		
+		}
+			
 		else if(getAge() % REPRODUCTION_RATE == 0)
 			reproduction(this);
 		

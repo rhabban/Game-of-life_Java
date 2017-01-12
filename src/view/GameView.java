@@ -43,6 +43,7 @@ public class GameView extends JFrame
 		
 		gameOfLife = new GameOfLifeModel();
 		gameOfLife.initGameOfLife();
+		System.out.println("Le jeu commence.");
 		
 		world = new WorldController(gameOfLife.getSea());
 		container = this.getContentPane();
