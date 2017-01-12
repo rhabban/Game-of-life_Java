@@ -31,6 +31,10 @@ public abstract class FishModel {
 		return this.sea.getCellsNextToFish(this, empty);
 	}
 	
+	public ArrayList<String> getNearestSardine(){
+		return this.sea.getNearestSardineNextToFish(this);
+	}
+	
 	public abstract void liveCycle(GameOfLifeModel gameOfLife);
 	
 	public void move(){

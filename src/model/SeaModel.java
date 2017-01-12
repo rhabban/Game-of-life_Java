@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -30,9 +31,14 @@ public class SeaModel {
 		this.height = height;
 	}
 	
-	public ArrayList<String> getCellsNextToFish(FishModel fish){
+	public ArrayList<String> getCellsNextTo(FishModel fish){
 		int x = fish.getpX();
 		int y = fish.getpY();
+		
+		return getCellsNextTo(x,y);
+	}
+	
+	public ArrayList<String> getCellsNextTo(int x, int y){
 		ArrayList<String> cells = new ArrayList<>();
 		
 		if(x > 0){
@@ -51,7 +57,7 @@ public class SeaModel {
 	}
 	
 	public ArrayList<String> getCellsNextToFish(FishModel fish, boolean empty){
-		ArrayList<String> cells = getCellsNextToFish(fish);
+		ArrayList<String> cells = getCellsNextTo(fish);
 		ArrayList<String> calculatedCells = new ArrayList<>();
 		for(String cell : cells){
 			FishModel fishOnCell = getFish(cell);
@@ -66,6 +72,59 @@ public class SeaModel {
 			}
 		}
 		return calculatedCells;
+	}
+	
+	public ArrayList<String> getNearestSardineNextToFish(FishModel fish){
+		int x = fish.getpX();
+		int y = fish.getpY();
+		ArrayList<String> cells = new ArrayList<>();
+		ArrayList<int[]> cellsToTest = new ArrayList<>();
+		
+		int position[] = {x,y};
+		cellsToTest.add(position);
+		
+		boolean finding = true;
+		int i = 1;
+		while(finding){
+			while(cellsToTest.size()> 0 ){
+				if(x-i >= 0){
+					cells.addAll(getSardineNextToCell(x-i, y));
+				}
+				if(x+i <= this.width-1){
+					cells.addAll(getSardineNextToCell(x+i, y));
+				}
+				if(y-i >= 0){
+					cells.addAll(getSardineNextToCell(x, y-i));
+				}
+				if(y+i < this.height-1){
+					cells.addAll(getSardineNextToCell(x, y+i));
+				}
+			
+				if (cells.size() > 0)
+					finding = false;
+
+				i++;
+			}
+
+			if(i >= this.width-1 || i >= this.height-1){
+				return null;
+			}
+		}
+		
+		ArrayList<String> unique_cells = new ArrayList<String>(new HashSet<String>(cells));
+		return unique_cells;
+	}
+	
+	public ArrayList<String> getSardineNextToCell(int x, int y){
+		ArrayList<String> cells = getCellsNextTo(x,y);
+		ArrayList<String> SardinesCells = new ArrayList<>();
+		for(String cell : cells){
+			FishModel fishOnCell = getFish(cell);
+				if(fishOnCell instanceof SardineModel){
+					SardinesCells.add(cell);
+			}
+		}
+		return SardinesCells;
 	}
 	
 	public FishModel getFish(int x, int y){
