@@ -4,10 +4,18 @@ import java.util.ArrayList;
 
 import model.FishModel;
 
-public class ChildState extends BehaviorState {
-	
-	public void move(FishModel fish){
-
+/**
+ * @author bastiensebire
+ * Permet de définir le comportement d'un requin lorsqu'il est enfant. Il va ici se déplacer de
+ * manière aléatoire et mangera les sardines qu'il rencontrera.
+ */
+public class ChildState extends BehaviorState 
+{
+	/* (non-Javadoc)
+	 * @see model.state.BehaviorState#move(model.FishModel)
+	 */
+	public void move(FishModel fish)
+	{
 		ArrayList<String> emptyCells = fish.getCellsNextToHim(true);
 		ArrayList<String> sardinesCells = fish.getCellsNextToHim(false);
 		

@@ -6,23 +6,36 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class SeaModel {
-
+/**
+ * @author bastiensebire
+ * SeaModel permet de créer une mer avec des sardines et des requins. On précise le nombre de poissons
+ * ainsi que la taille de la grille.
+ */
+public class SeaModel 
+{
 	protected int sharksCount;
 	protected int sardinesCount;
 	protected int width = 10;
 	protected int height = 10;
 	
 	protected ArrayList<FishModel> fishesX;
-
 	protected ConcurrentHashMap<String, FishModel> fishes = new ConcurrentHashMap<>();
 	
-	public SeaModel() {
+	public SeaModel() 
+	{
+		
 		this.sharksCount = 1;
 		this.sardinesCount = 2;
 	}
 
-	public SeaModel(int sharksCount, int sardinesCount, int width, int height) {
+	/**
+	 * @param sharksCount
+	 * @param sardinesCount
+	 * @param width
+	 * @param height
+	 */
+	public SeaModel(int sharksCount, int sardinesCount, int width, int height) 
+	{
 		super();
 		this.sharksCount = sharksCount;
 		this.sardinesCount = sardinesCount;
@@ -30,39 +43,52 @@ public class SeaModel {
 		this.height = height;
 	}
 	
-	public ArrayList<String> getCellsNextToFish(FishModel fish){
+	/**
+	 * @param fish
+	 * @return
+	 * Récupère toutes les cases autour d'un poisson.
+	 */
+	public ArrayList<String> getCellsNextToFish(FishModel fish)
+	{
 		int x = fish.getpX();
 		int y = fish.getpY();
 		ArrayList<String> cells = new ArrayList<>();
 		
-		if(x > 0){
+		if(x > 0)
 			cells.add((x-1)+"-"+y);
-		}
-		if(x < this.width-1){
+		if(x < this.width-1)
 			cells.add((x+1)+"-"+y);
-		}
-		if(y > 0){
+		if(y > 0)
 			cells.add(x+"-"+(y-1));
-		}
-		if(y < this.height-1){
+		if(y < this.height-1)
 			cells.add(x+"-"+(y+1));
-		}
 		return cells;
 	}
 	
-	public ArrayList<String> getCellsNextToFish(FishModel fish, boolean empty){
+	/**
+	 * @param fish
+	 * @param empty
+	 * @return
+	 * Permet de récupérer les cellules autour d'un poisson. Le paramètre empty permet de 
+	 * préciser si on veut uniquement les cellules vides ou non.
+	 */
+	public ArrayList<String> getCellsNextToFish(FishModel fish, boolean empty)
+	{
 		ArrayList<String> cells = getCellsNextToFish(fish);
 		ArrayList<String> calculatedCells = new ArrayList<>();
-		for(String cell : cells){
+		for(String cell : cells)
+		{
 			FishModel fishOnCell = getFish(cell);
-			if(empty){
-				if(!(fishOnCell instanceof FishModel)){
+			if(empty)
+			{
+				if(!(fishOnCell instanceof FishModel))
 					calculatedCells.add(cell);
-				}
-			} else {
-				if(fishOnCell instanceof SardineModel){
+			} 
+			
+			else 
+			{
+				if(fishOnCell instanceof SardineModel)
 					calculatedCells.add(cell);
-				}
 			}
 		}
 		return calculatedCells;
@@ -76,12 +102,23 @@ public class SeaModel {
 		return this.fishes.get(xy);
 	}
 	
-	public void addFish(FishModel fish){
+	/**
+	 * @param fish
+	 * Ajouter un poisson à la grille.
+	 */
+	public void addFish(FishModel fish)
+	{
 		String position = fish.getpXY();
 		this.fishes.put(position, fish);
 	}
 	
-	public void setFishPosition(String newPosition, String oldPosition){
+	/**
+	 * @param newPosition
+	 * @param oldPosition
+	 * Définir la nouvelle position d'un poisson.
+	 */
+	public void setFishPosition(String newPosition, String oldPosition)
+	{
 		FishModel fish = fishes.get(oldPosition);
 		fishes.remove(oldPosition);
 		FishModel fish2 = fishes.get(newPosition);

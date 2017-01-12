@@ -4,13 +4,21 @@ import java.util.ArrayList;
 
 import model.FishModel;
 
-public class RandomState extends BehaviorState {
-	
-	public void move(FishModel fish){
-
+/**
+ * @author bastiensebire
+ * Permet de définir un comportement de déplacement aléatoire.
+ */
+public class RandomState extends BehaviorState 
+{
+	/* (non-Javadoc)
+	 * @see model.state.BehaviorState#move(model.FishModel)
+	 */
+	public void move(FishModel fish)
+	{
 		ArrayList<String> cells = fish.getCellsNextToHim(true);
 		
-		if(cells.size()>0){
+		if(cells.size()>0)
+		{
 			int value = (int)(Math.random() * cells.size()) + 0;
 			String newPosition = cells.get(value);
 			String[] newXY = newPosition.split("-");
